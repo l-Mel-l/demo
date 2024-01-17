@@ -1,9 +1,8 @@
 package com.example.demo.teachers;
 
+import com.example.demo.student.Student;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +19,9 @@ public class TeacherController {
     @GetMapping
     public List<Teacher> getTeachers(){
         return teacherService.getTeachers();
+    }
+    @PostMapping
+    public void addStudent(@RequestBody Teacher teacher) {
+        teacherService.addTeacher(teacher);
     }
 }

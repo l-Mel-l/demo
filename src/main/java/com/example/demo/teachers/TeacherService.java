@@ -1,5 +1,6 @@
 package com.example.demo.teachers;
 
+import com.example.demo.student.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +17,8 @@ public class TeacherService {
 
     public List<Teacher> getTeachers(){
         return teacherRepository.findAll();
+    }
+    public void addTeacher(Teacher teacher) {
+        teacherRepository.save(teacher);
     }
 }
