@@ -1,5 +1,7 @@
 package com.example.demo.lesson;
 
+import com.example.demo.group.GroupRepository;
+import com.example.demo.group.Groups;
 import com.example.demo.teachers.Teacher;
 import com.example.demo.teachers.TeacherRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -12,27 +14,30 @@ import java.util.List;
 public class LessonConfig {
 
     @Bean
-    CommandLineRunner commandLineRunnerForLesson(LessonRepository lessonRepository, TeacherRepository teacherRepository) {
+    CommandLineRunner commandLineRunnerForLesson4(LessonRepository lessonRepository, TeacherRepository teacherRepository, GroupRepository groupRepository) {
         return args -> {
+
             List<Teacher> teachers = teacherRepository.findAll();
+            List<Groups> groups = groupRepository.findAll();
 
             Lesson lesson1 = new Lesson(
-                    null, // id (будет присвоен автоматически)
-                    teachers.get(0).getId(), // groupId
-                    "Понедельник", // dayOfWeek
-                    "Математика", // objectName
-                    1, // lessonNumber
-                    214L, // classroomId (тип Long)
-                    214125L // teacherId (тип Long)
+                    null,
+                    groups.get(0).getId(),
+                    "Понедельник",
+                    "Математика",
+                    1,
+                    215L,
+                    teachers.get(0).getId()
             );
             Lesson lesson2 = new Lesson(
-                    null, // id (будет присвоен автоматически)
-                    teachers.get(1).getId(), // groupId
-                    "Понедельник", // dayOfWeek
-                    "РМП", // objectName
-                    2, // lessonNumber
-                    312L, // classroomId (тип Long)
-                    657826L // teacherId (тип Long)
+                    null,
+                    groups.get(1).getId(),
+                    "Понедельник",
+                    "РМП",
+                    2,
+                    312L,
+                    teachers.get(1).getId()
+
             );
             lesson1.setTeacher(teachers.get(0));
             lesson2.setTeacher(teachers.get(1));
