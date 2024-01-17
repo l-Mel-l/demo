@@ -86,5 +86,6 @@ public class Groups {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
+
 }
 

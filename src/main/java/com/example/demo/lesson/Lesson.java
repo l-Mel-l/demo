@@ -1,5 +1,6 @@
 package com.example.demo.lesson;
 
+import com.example.demo.group.Groups;
 import com.example.demo.teachers.Teacher;
 import jakarta.persistence.*;
 
@@ -132,5 +133,15 @@ public class Lesson {
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+    @ManyToOne
+    @JoinColumn(name = "id_group", referencedColumnName = "id",insertable = false, updatable = false)
+    private Groups groups;
+
+    public Groups getGroups() {
+        return groups;
+    }
+    public void setGroups(Groups groups) {
+        this.groups = groups;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.demo.lesson; // Assuming you have a "lesson" package
 
+import com.example.demo.group.Groups;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.teachers.Teacher;
@@ -19,6 +20,7 @@ public class LessonService {
         List<Lesson> lessons = lessonRepository.findAll();
         for (Lesson lesson : lessons) {
             Teacher teacher = lesson.getTeacher();
+            Groups groups = lesson.getGroups();
         }
         return lessons;
     }

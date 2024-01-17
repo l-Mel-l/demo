@@ -24,4 +24,8 @@ public class GradeController {
     public void addGrade(@RequestBody Grade grade) {
         gradeService.addGrade(grade);
     }
+    @DeleteMapping(path = "{gradeId}")
+    public void deleteStudent(@PathVariable("gradeId") Long gradeId) {
+        gradeService.deleteStudent(gradeId);
+    }
 }

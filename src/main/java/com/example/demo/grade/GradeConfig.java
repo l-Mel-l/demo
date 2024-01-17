@@ -15,9 +15,9 @@ public class GradeConfig {
     CommandLineRunner commandLineRunnerForGrade5(GradeRepository gradeRepository, StudentRepository studentRepository) {
         return args -> {
             List<Student> students = studentRepository.findAll();
+            if (!students.isEmpty()) {
 
             Grade grade1 = new Grade(
-                    null,
                     2,
                     "Математика",
                     null,
@@ -25,7 +25,6 @@ public class GradeConfig {
             );
 
             Grade grade2 = new Grade(
-                    null,
                     5,
                     "РМП",
                     null,
@@ -33,6 +32,7 @@ public class GradeConfig {
             );
 
             gradeRepository.saveAll(List.of(grade1, grade2));
+            }
         };
     }
 }

@@ -13,7 +13,10 @@ public class GroupConfig {
     @Bean
     CommandLineRunner commandLineRunner3(GroupRepository groupRepository, TeacherRepository teacherRepository) {
         return args -> {
+            // Проверяем, есть ли учителя в базе данных
             List<Teacher> teachers = teacherRepository.findAll();
+
+            if (!teachers.isEmpty()) {
 
             Groups group1 = new Groups(
                     teachers.get(0).getId(),
@@ -30,6 +33,7 @@ public class GroupConfig {
 
 
             groupRepository.saveAll(List.of(group1, group2));
+            }
         };
     }
 }
