@@ -1,7 +1,9 @@
 package com.example.demo.group;
 
+import com.example.demo.student.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.demo.teachers.Teacher;
 
 import java.util.List;
 
@@ -14,7 +16,15 @@ public class GroupService {
         this.groupRepository = groupRepository;
     }
 
-    public List<Group> getGroups() {
-        return groupRepository.findAll();
+    public List<Groups> getGroups() {
+        List<Groups> groups = groupRepository.findAll();
+        for (Groups group : groups) {
+            Teacher teacher = group.getTeacher();
+        }
+        return groups;
     }
+    public void addGroup(Groups group) {
+        groupRepository.save(group);
+    }
+
 }

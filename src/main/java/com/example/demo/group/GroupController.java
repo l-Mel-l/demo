@@ -1,9 +1,8 @@
 package com.example.demo.group;
 
+import com.example.demo.student.Student;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,7 +17,11 @@ public class GroupController {
     }
 
     @GetMapping
-    public List<Group> getGroups() {
+    public List<Groups> getGroups() {
         return groupService.getGroups();
+    }
+    @PostMapping
+    public void addStudent(@RequestBody Groups group) {
+        groupService.addGroup(group);
     }
 }

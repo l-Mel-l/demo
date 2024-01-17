@@ -1,10 +1,11 @@
 package com.example.demo.group;
 
+import com.example.demo.teachers.Teacher;
 import jakarta.persistence.*;
 
 @Entity
 @Table
-public class Group {
+public class Groups {
     @Id
     @SequenceGenerator(
             name = "group_sequence", sequenceName = "group_sequence", allocationSize = 1
@@ -18,16 +19,16 @@ public class Group {
     private String title;
     private String course;
 
-    public Group() {}
+    public Groups() {}
 
-    public Group(Long id, Long teacherId, String title, String course) {
+    public Groups(Long id, Long teacherId, String title, String course) {
         this.id = id;
         this.teacherId = teacherId;
         this.title = title;
         this.course = course;
     }
 
-    public Group(Long teacherId, String title, String course) {
+    public Groups(Long teacherId, String title, String course) {
         this.teacherId = teacherId;
         this.title = title;
         this.course = course;
@@ -67,11 +68,23 @@ public class Group {
 
     @Override
     public String toString() {
-        return "Group{" +
+        return "Groups{" +
                 "id=" + id +
                 ", teacherId=" + teacherId +
                 ", title='" + title + '\'' +
                 ", course='" + course + '\'' +
                 '}';
     }
+    @ManyToOne
+    @JoinColumn(name = "id_teacher", referencedColumnName = "id",insertable = false, updatable = false)
+    private Teacher teacher;
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
 }
+

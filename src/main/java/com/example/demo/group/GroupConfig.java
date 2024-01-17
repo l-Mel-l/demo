@@ -13,19 +13,21 @@ public class GroupConfig {
     @Bean
     CommandLineRunner commandLineRunner3(GroupRepository groupRepository, TeacherRepository teacherRepository) {
         return args -> {
-            // Предположим, что у вас есть уже сохраненные учителя
             List<Teacher> teachers = teacherRepository.findAll();
 
-            Group group1 = new Group(
+            Groups group1 = new Groups(
                     teachers.get(0).getId(),
                     "Группа 1",
                     "Курс 1"
             );
-            Group group2 = new Group(
+            Groups group2 = new Groups(
                     teachers.get(1).getId(),
                     "Группа 2",
                     "Курс 2"
             );
+            group1.setTeacher(teachers.get(0));
+            group2.setTeacher(teachers.get(1));
+
 
             groupRepository.saveAll(List.of(group1, group2));
         };
