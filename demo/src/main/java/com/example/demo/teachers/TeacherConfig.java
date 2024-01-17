@@ -9,7 +9,7 @@ import java.util.List;
 @Configuration
 public class TeacherConfig {
     @Bean
-    CommandLineRunner commandLineRunner(TeacherRepository repository) {
+    CommandLineRunner commandLineRunner2(TeacherRepository repository) {
         return args -> {
             Teacher teacher1 = new Teacher(
                     "Иван",
