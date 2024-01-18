@@ -24,4 +24,8 @@ public class LessonController {
     public void addLesson(@RequestBody Lesson lesson) {
         lessonService.addLesson(lesson);
     }
+    @DeleteMapping(path = "{lessonId}")
+    public void deleteLesson(@PathVariable("lessonId") Long lessonId) {
+        lessonService.deleteLesson(lessonId);
+    }
 }

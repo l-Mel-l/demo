@@ -28,4 +28,7 @@ public class LessonService {
     public void addLesson(Lesson lesson) {
         lessonRepository.save(lesson);
     }
+    public void deleteLesson(Long gradeId) {
+        lessonRepository.deleteById(gradeId);
+    }
 }

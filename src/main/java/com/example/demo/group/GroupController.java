@@ -21,7 +21,11 @@ public class GroupController {
         return groupService.getGroups();
     }
     @PostMapping
-    public void addStudent(@RequestBody Groups group) {
+    public void addGroup(@RequestBody Groups group) {
         groupService.addGroup(group);
+    }
+    @DeleteMapping(path = "{groupId}")
+    public void deleteGroup(@PathVariable("groupId") Long groupId) {
+        groupService.deleteGroup(groupId);
     }
 }

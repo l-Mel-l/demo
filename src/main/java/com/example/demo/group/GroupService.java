@@ -23,8 +23,10 @@ public class GroupService {
         }
         return groups;
     }
-    public void addGroup(Groups group) {
-        groupRepository.save(group);
+    public void addGroup(Groups group) { groupRepository.save(group); }
+
+    public void deleteGroup(Long groupId) {
+        groupRepository.deleteById(groupId);
     }
 
 }
